@@ -1,6 +1,5 @@
 const searchInput = document.getElementById("searchInput");
-const searchButton = document.getElementById("searchButton");
-const resultsDiv = document.getElementById("results");
+const searchButton = document.getElementById("btn-search");
 
 searchButton.addEventListener("click", function () {
   const searchTerm = searchInput.value;
