@@ -1,13 +1,47 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #22254b;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.logo {
+  display: flex;
+}
+
+.logo p {
+  padding: 0;
+  color: aliceblue;
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}
+
+.logo span {
+  color: #2b033d;
 }
 
 #search-form {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: #525699;
+}
+
+#search {
+  border: 1px solid #454a8d;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
 }
 
 .btn-search {
   margin-top: 10px;
+}
+
+.search p {
+  font-size: 20px;
+  font-weight: 700;
+  color: aliceblue;
 }
