@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#search-form {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-search {
+  margin-top: 10px;
+}
