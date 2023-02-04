@@ -1,38 +1,39 @@
-const form = document.getElementById("search-form");
-const search = document.getElementById("search");
-const result = document.getElementById("result");
-const more = document.getElementById("more");
+const formElement = document.getElementById("search-form");
+const searchElement = document.getElementById("search");
+const resultElement = document.getElementById("result");
+const moreElement = document.getElementById("more");
+
+const API_URL_LYRICS_OVH = `https://api.lyrics.ovh/suggest`;
 
 async function searchSongs(searchTerm) {
-  const apiURL = `https://api.lyrics.ovh/suggest/${searchTerm}`;
-  const res = await fetch(apiURL);
-  const data = await res.json();
-  // console.log(data);
-  dataListOfSongs(data);
+  const apiURL = `${API_URL_LYRICS_OVH}/${searchTerm}`;
+  const response = await fetch(apiURL);
+  const result = await response.json();
+
+  renderSongs(result.data);
 }
 
-function dataListOfSongs(dataList) {
-  result.innerHTML = `
+function renderSongs(songs) {
+  resultElement.innerHTML = `
   <ul class="songs">
-    ${dataList.data
+    ${songs
       .map(
-        (song) => `<li>
-    <span><strong>${song.artist.name}</strong> - ${song.title}</span>
-  </li>`
+        (song) => `
+          <li>
+            <span><strong>${song.artist.name}</strong> - ${song.title}</span>
+          </li>`
       )
       .join("")}
   </ul>
  `;
 }
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+formElement.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-  const searchTermInput = search.value.trim();
+  const searchTermInput = searchElement.value.trim();
 
-  if (!searchTermInput) {
-    alert("Please type in a search term");
-  } else {
+  if (searchTermInput) {
     searchSongs(searchTermInput);
   }
 });

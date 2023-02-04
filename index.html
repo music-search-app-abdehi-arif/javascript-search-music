@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- CSS -->
-    <link rel="stylesheet" href="index.css" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Search Music App</title>
+    <link rel="stylesheet" href="index.css" />
   </head>
 
   <body>
-    <!-- SEARCH FORM -->
-    <form action="" id="search-form">
-      <div class="logo">
-        <p>Music<span>Corn.</span></p>
-      </div>
-      <div class="search">
-        <input type="text" placeholder="Search song title..." id="search" />
-      </div>
-    </form>
+    <main>
+      <!-- SEARCH FORM -->
+      <form id="search-form">
+        <div class="logo">
+          <p>Music<span>Corn.</span></p>
+        </div>
+        <div class="search">
+          <label hidden for="search">Search song</label>
+          <input type="search" placeholder="Search song title..." id="search" />
+        </div>
+      </form>
 
-    <!-- RESULT -->
-    <div id="result" class="container"></div>
-    <div id="more" class="container centered"></div>
+      <!-- RESULT -->
+      <div id="result" class="container">
+        <!-- Song search results -->
+      </div>
+    </main>
+    s
     <script src="index.js"></script>
   </body>
 </html>
