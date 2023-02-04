@@ -1,19 +1,38 @@
-const searchInput = document.getElementById("searchInput");
-const searchButton = document.getElementById("btn-search");
+const form = document.getElementById("search-form");
+const search = document.getElementById("search");
+const result = document.getElementById("result");
+const more = document.getElementById("more");
 
-searchButton.addEventListener("click", function () {
-  const searchTerm = searchInput.value;
+async function searchSongs(searchTerm) {
+  const apiURL = `https://api.lyrics.ovh/suggest/${searchTerm}`;
+  const res = await fetch(apiURL);
+  const data = await res.json();
+  // console.log(data);
+  dataListOfSongs(data);
+}
 
-  fetch(`https://api.example.com/music?q=${searchTerm}`)
-    .then((response) => response.json())
-    .then((data) => {
-      resultsDiv.innerHTML = "";
+function dataListOfSongs(dataList) {
+  result.innerHTML = `
+  <ul class="songs">
+    ${dataList.data
+      .map(
+        (song) => `<li>
+    <span><strong>${song.artist.name}</strong> - ${song.title}</span>
+  </li>`
+      )
+      .join("")}
+  </ul>
+ `;
+}
 
-      data.forEach((item) => {
-        const title = item.title;
-        const artist = item.artist;
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-        resultsDiv.innerHTML += `<p>${title} by ${artist}</p>`;
-      });
-    });
+  const searchTermInput = search.value.trim();
+
+  if (!searchTermInput) {
+    alert("Please type in a search term");
+  } else {
+    searchSongs(searchTermInput);
+  }
 });
